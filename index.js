@@ -4,34 +4,61 @@ const tbody = document.querySelector("tbody");
 const btnClick = document.getElementById('btn');
 //create one empty arrray to store data
 const tableData = [
-    
+    {}
 ];
 
-function createTableRow(data,tablebody,id){
+function createTableRow(data,tbody,id){
 
     const tr = document.createElement('tr');
     const idTD = document.createElement('td');
+    idTD.id ="index";
     idTD.textContent = id;
 
     const studentNameTD  = document.createElement('td');
     const  input = document.createElement('input')
-    input.id = "text"
+    input.id = "text1"
     input.type = 'text';
+    input.textContent = data.student_name;
   input.style.margin ="15px";
   studentNameTD .appendChild(input);
 
     
     const studentRollTD = document.createElement('td');
-     studentRollTD.textContent = data.student_roll;
+     //studentRollTD.textContent = data.student_roll;
+     const  inputRollNumber = document.createElement('input')
+     inputRollNumber.id = "text2"
+     inputRollNumber.type = 'number';
+     inputRollNumber.style.margin ="15px";
+     inputRollNumber.textContent= data.student_roll;
+     studentRollTD .appendChild(inputRollNumber);
+
 
     const subjectTD = document.createElement('td');
-    subjectTD.textContent = data.subject;
+    //subjectTD.textContent = data.subject;
+    const  inputSubject = document.createElement('input')
+    inputSubject.id = "text3"
+    inputSubject.type = 'text';
+  inputSubject.style.margin ="15px";
+  subjectTD .appendChild(inputSubject);
+
 
     const marksTD = document.createElement('td');
-    marksTD.textContent = data.marks;
+    //marksTD.textContent = data.marks;
+    const  inputMarks = document.createElement('input')
+    inputMarks.id = "text4"
+    inputMarks.type = 'number';
+    inputMarks.style.margin ="15px";
+    marksTD .appendChild(inputMarks);
+
 
     const markedByTD = document.createElement('td');
-    markedByTD.textContent = data.markedBy;
+    // markedByTD.textContent = data.markedBy;
+    const  inputMarkedBy = document.createElement('input')
+    inputMarkedBy.id = "text5"
+    inputMarkedBy.type = 'text';
+    inputMarkedBy.style.margin ="15px";
+    markedByTD.appendChild(inputMarkedBy);
+
    
      const saveTD = document.createElement('td');
      //const div = document.createElement('div');
@@ -51,27 +78,51 @@ function createTableRow(data,tablebody,id){
    
     tbody.appendChild(tr);
 
-input.addEventListener('change', function(){
+//     const textboxes = [text1,text2,text3,text4,text5]
+// textboxes.forEach(function(textbox){
+//     textbox.addEventListener('change', function(){
 
-    var inputValue = this.value;
+//         var inputValue = this.value;
+//         //console.log(inputValue);
+// })
+var ele = document.getElementById('index');
+var element1 = document.getElementById('text1');
+var element2 = document.getElementById('text2');
+var element3 = document.getElementById('text3');
+var element4 = document.getElementById('text4');
+var element5 = document.getElementById('text5');
 
     button.addEventListener('click' , function(){
-        tbody.innerHTML="";
-        const name = inputValue;
         
-        console.log(name);
-        //inputValue.valueOf =" "
-        const tData = {student_name:name, student_roll:"2020500", subject:"english", marks:95, markedBy:"teacher"}
+        // tr.appendChild(element1);
+        // tr.appendChild(element2);
+        // tr.appendChild(element3);
+        // tr.appendChild(element4);
+        // tr.appendChild(element5);
+        // tbody.appendChild(tr);
+        
+       
+        //console.log(element.value);
+       
+        //const name = inputValue;
+        
+         //
+         
+        // //inputValue.valueOf =" "
+        
+        const tData = {id: ele.value, student_name:element1.value, student_roll:element2.value, subject:element3.value, marks:element4.value, markedBy:element5.value}
 
-        var row = this.parentNode.parentNode;
+        //var row = this.parentNode.parentNode;
+        //row.parentNode.removeChild(row);
         tableData.push(tData);
-        renderElement();  
-    //row.parentNode.removeChild(row);
-     console.log(inputValue);
+        //renderElement();  
+        console.log(tableData)
+    
+     //console.log(inputValue);
     })
     
 
-})
+
 
 
 
@@ -79,18 +130,8 @@ input.addEventListener('change', function(){
 
 }
 function handelClick(){
-    tbody.innerHTML="";
-    //const name = inputValue;
-    
-    //console.log(name);
-    //inputValue.valueOf =" "
-    const tData = {student_name:"name", student_roll:"2020500", subject:"english", marks:95, markedBy:"teacher"}
-
-    var row = this.parentNode.parentNode;
-    tableData.push(tData);
-    renderElement();  
-//row.parentNode.removeChild(row);
- console.log(inputValue);
+    tbody.innerHTML=" ";
+    renderElement();
 }
 
 btnClick.addEventListener('click',handelClick)
